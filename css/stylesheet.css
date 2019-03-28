@@ -8,6 +8,20 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "determination";
+  src: url("../fonts/DeterminationMonoWeb.woff");
+}
+
+@font-face {
+  font-family: "mars";
+  src: url("../fonts/Mars_Needs_Cunnilingus.ttf");
+}
+
+@font-face {
+  font-family: "mercy";
+  src: url("../fonts/MERCY.ttf");
+}
 
 /* ----- Main CSS ----- */
 html {
@@ -16,7 +30,7 @@ html {
 body {
   margin: 50px;
   color: #fff;
-  font-family: "RobotoMono", Courier, monospace;
+  font-family: "determination", Courier, monospace;
 }
 h1 {
   font-size: 3rem;
@@ -29,7 +43,7 @@ h1 {
 canvas {
   width: 800px;
   height: 600px;
-  background-color: #fff;
+  background-color: #999;
   border: solid #fff 5px;
   border-radius: 15px;
   display: inline-block;

@@ -79,11 +79,13 @@ function drawStuff() {
     var canvas = document.getElementById("battle");
     var c = canvas.getContext("2d");
     c.clearRect(0, 0, 200, 200);
+
     if(grace == false) {
         c.drawImage(image, tickX, tickY);
     } else {
         c.drawImage(heart_grace, tickX, tickY);
     }
+    
     if (keyD == true && (tickX + 1) != 176) {
         tickX += 1;
     }
