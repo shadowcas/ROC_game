@@ -1,0 +1,31 @@
+/* ----- Fonts ----- */
+@font-face {
+  font-family: 'RobotoMono';
+  src: url('../../fonts/RobotoMono/RobotoMono-Regular.eot?#iefix') format('embedded-opentype');
+}
+
+/* ----- Main CSS ----- */
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../media/home/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#play {
+  background-image: url("../../media/home/play.svg");
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
+
+#play:hover {
+  background-image: url("../../media/home/play_hover.svg");
+  cursor: pointer;
+}
