@@ -7,12 +7,16 @@ export class Bullet {
         this.speed = speed;
     }
 
-    draw(ctx) {
+    draw(gameFrame) {
+        const ctx = gameFrame.getContext('2d');
         let bulletRender = new Image();
-        let x = this.x, y = this.y;
 
         bulletRender.src = this.src;
-        ctx.drawImage(bulletRender, x, y);
+        ctx.drawImage(bulletRender,this.x, this.y);
+
+        if (this.x >= gameFrame.width) {
+            this.x = 0;
+        }
     }
 
     shoot(direction) {

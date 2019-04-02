@@ -2,9 +2,9 @@
 
 import {Bullet} from "./objects/bullet.mjs";
 
-const   bullet1 = new Bullet(1, 5, 'media/combat_test/seed.png'),
-        bullet2 = new Bullet(2, 5, 'media/combat_test/seed.png'),
-        bullet3 = new Bullet(3, 5, 'media/combat_test/seed.png');
+// const   bullet1 = new Bullet(1, 5, 'media/combat_test/seed.png'),
+//         bullet2 = new Bullet(2, 5, 'media/combat_test/seed.png'),
+//         bullet3 = new Bullet(3, 5, 'media/combat_test/seed.png');
 
 const gameFrame = document.getElementById('gameFrame');
 const ctx = gameFrame.getContext('2d');
@@ -12,19 +12,27 @@ const ctx = gameFrame.getContext('2d');
 // ----------
 // Game loop
 // ----------
-function update(elapsed) {
+let bullets = [];
+fight1_init();
+function fight1_init() {
+  for (let i = 0; i < 10; i++) {
+    bullets[i] = new Bullet(i, 5, 'media/combat_test/seed.png');
+    bullets[i].y = i * gameFrame.height / 10;
+  }
+}
 
-  bullet1.shoot('diagonal');
-  bullet2.shoot('horizontal');
-  bullet3.shoot('vertical');
+function update(elapsed) {
+  
 }
 
 function render() {
   ctx.clearRect(0, 0, 600, 800);
 
-  bullet1.draw(ctx);
-  bullet2.draw(ctx);
-  bullet3.draw(ctx);
+  for (let i = 0; i < 10; i++) {
+    bullets[i].shoot('horizontal');
+    bullets[i].draw(gameFrame);
+    console.log(bullets[i].x);
+  }
 }
 
 let lastUpdate;
