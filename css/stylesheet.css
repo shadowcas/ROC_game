@@ -28,7 +28,6 @@ html {
     background-color: #000;
 }
 body {
-  margin: 50px;
   color: #fff;
   font-family: "determination", Courier, monospace;
 }
@@ -41,8 +40,6 @@ h1 {
   margin-top: 50px;
 }
 canvas {
-  width: 800px;
-  height: 600px;
   background-color: #999;
   border: solid #fff 5px;
   border-radius: 15px;
