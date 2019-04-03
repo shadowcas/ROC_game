@@ -6,7 +6,8 @@ import {Player} from "./objects/player.mjs";
 const gameFrame = document.getElementById('gameFrame'),
       ctx = gameFrame.getContext('2d');
 
-let player = new Player(1, 3, 'media/player/heart.png');
+let player = new Player(1, 3, 'media/player/heart.png'),
+    grace = false;
 player.x = gameFrame.width / 2;
 player.y = gameFrame.height / 2;
 
@@ -39,38 +40,20 @@ function fight1_init() {
 function update(elapsed) {
   player.calc();
 
-  console.log(player.x)
+  let hit = bullets.filter(bullet => bullet.x > player.x - 15 && bullet.x < player.x + 25 && bullet.y > player.y - 15&& bullet.y < player.y + 25);
 
-  console.log(bullets.filter(bullet => bullet.x == player.x && bullet.y == player.y));
-
-  if (bullets.some(bullet => bullet.x > player.x - 15) &&
-      bullets.some(bullet => bullet.x < player.x + 15) &&
-      bullets.some(bullet => bullet.y > player.y - 15) &&
-      bullets.some(bullet => bullet.y < player.y + 15)) {
-    // console.log('hit');
+  if (hit.length > 0 && player.hit == false) {
+    player.HPhandler("hit");
+    console.log("hit");
   }
 
-  // let foundX = bullets.some(bullet => bullet.x == player.x);
-  // let foundY = bullets.some(bullet => bullet.y == player.y);
-  // console.log(found);
-
-  // if (bullets.some(e => e.x > player.x - 15).length > 0 &&
-  //     bullets.some(e => e.x < player.x + 15).length > 0 &&
-  //     bullets.some(e => e.y > player.y - 15).length > 0 &&
-  //     bullets.some(e => e.x < player.y + 15).length > 0) {
-  //   console.log('hit');
-  // } else {
-  //   console.log('nope');
-  // }
-
-  // if( seedX > tickX - 15 &&
-  //     seedX < tickX + 15 &&
-  //     seedY > tickY - 15 &&
-  //     seedX < tickY + 15 &&
-  //     grace == false) {
-  //   console.log('hit');
-  //   grace = true;wa
-  // }
+  if (player.hit == true) {
+    player.invFrames++;
+    if (player.invFrames == 250) {
+      player.hit = false;
+      player.invFrames = 0;
+    }
+  }
 }
 
 function render() {

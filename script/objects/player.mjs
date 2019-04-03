@@ -1,28 +1,50 @@
 export class Player {
     constructor(speed, startHP, looks) {
-        this.speed = speed * 10;
+        this.speed = speed * 5;
         this.health = startHP;
         this.src = looks;
-        this.hit = false;
+
+        let insert = "_hit";
+
+        let new_looks = looks.split('');
+        new_looks.splice(looks.length-4, 0, insert);
+        this.hitSrc = new_looks.join('');
+
         this.x = 0;
         this.y = 0;
+
         this.W = false,
         this.A = false,
         this.S = false,
         this.D = false;
+
+        this.hit = false;
+        this.grace = false;
+        this.invFrames = 0;
     }
 
     draw(gameFrame) {
         const ctx = gameFrame.getContext('2d');
         let render = new Image();
 
-        render.src = this.src;
+        if (this.hit == true) {
+            render.src = this.hitSrc;
+        } else {
+            render.src = this.src;
+        }
+
         ctx.drawImage(render, this.x, this.y);
     }
 
-    HPhandler(hit) {
-        if (hit) {
+    HPhandler(handle) {
+        if (handle == "hit") {
             this.health--;
+            this.hit = true;
+
+            if (this.health == 0) {
+                alert("game over");
+                window.location.href = "index.html";
+            }
         }
     }
 
@@ -60,9 +82,9 @@ export class Player {
             }
         }
     }
+
     calc() {
-        // console.log(this.A, this.S, this.D, this.W);
-        if (this.D && (this.x + 30) <= gameFrame.width) {this.x += this.speed}
+        if (this.D && (this.x + 25) <= gameFrame.width) {this.x += this.speed}
         if (this.S && (this.y + 30) <= gameFrame.height) {this.y += this.speed}
         if (this.A && (this.x - 10) >= 0) {this.x -= this.speed}
         if (this.W && (this.y - 10) >= 0) {this.y -= this.speed}
