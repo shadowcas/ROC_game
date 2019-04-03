@@ -62,12 +62,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-#field canvas {
+#canvasField {
   width: 550px;
   height: 700px;
   background-image: url("../../media/play/gameframe.png");
   background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#field canvas {
+  position: absolute;
+  bottom: 26px;
+  left: 23px;
 }
 
 #shop {
