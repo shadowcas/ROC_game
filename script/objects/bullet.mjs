@@ -17,6 +17,9 @@ export class Bullet {
         if (this.x >= gameFrame.width) {
             this.x = 0;
         }
+        if (this.y >= gameFrame.height) {
+            this.y = 0;
+        }
     }
 
     shoot(direction) {

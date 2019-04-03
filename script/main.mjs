@@ -17,7 +17,11 @@ fight1_init();
 function fight1_init() {
   for (let i = 0; i < 10; i++) {
     bullets[i] = new Bullet(i, 5, 'media/combat_test/seed.png');
-    bullets[i].y = i * gameFrame.height / 10;
+    if (i % 2 == 0) {
+      bullets[i].y = i * gameFrame.width / 5;
+    } else {
+      bullets[i].x = i * gameFrame.height / 5;
+    }
   }
 }
 
@@ -29,9 +33,12 @@ function render() {
   ctx.clearRect(0, 0, 600, 800);
 
   for (let i = 0; i < 10; i++) {
-    bullets[i].shoot('horizontal');
+    if (i % 2 == 0) {
+      bullets[i].shoot('horizontal');
+    } else {
+      bullets[i].shoot('vertical');
+    }
     bullets[i].draw(gameFrame);
-    console.log(bullets[i].x);
   }
 }
 
