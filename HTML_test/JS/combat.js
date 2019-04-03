@@ -104,7 +104,6 @@ function drawStuff() {
     if(seedX > tickX - 15 && seedX < tickX + 15 && seedY > tickY - 15 && seedX < tickY + 15 && grace == false) {
         console.log('hit');
         grace = true;
-
     }
 
     if(grace == true) {

@@ -1,10 +1,10 @@
 export class Bullet {
     constructor(id, speed, looks) {
         this.id = id;
+        this.speed = speed;
         this.src = looks;
         this.x = 0;
         this.y = 0;
-        this.speed = speed;
     }
 
     draw(gameFrame) {
@@ -14,12 +14,8 @@ export class Bullet {
         bulletRender.src = this.src;
         ctx.drawImage(bulletRender,this.x, this.y);
 
-        if (this.x >= gameFrame.width) {
-            this.x = 0;
-        }
-        if (this.y >= gameFrame.height) {
-            this.y = 0;
-        }
+        if (this.x >= gameFrame.width) {this.x = 0;}
+        if (this.y >= gameFrame.height) {this.y = 0;}
     }
 
     shoot(direction) {
