@@ -36,14 +36,23 @@ export class Player {
         ctx.drawImage(render, this.x, this.y);
     }
 
-    HPhandler(handle) {
+    HPhandler(handle = null) {
         if (handle == "hit") {
+            document.getElementById(`L${this.health}`).src = this.hitSrc;
             this.health--;
             this.hit = true;
 
             if (this.health == 0) {
                 alert("game over");
                 window.location.href = "index.html";
+            }
+        }
+
+        if (this.hit == true) {
+            this.invFrames++;
+            if (this.invFrames == 120) {
+                this.hit = false;
+                this.invFrames = 0;
             }
         }
     }

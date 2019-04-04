@@ -5,6 +5,8 @@ export class Bullet {
         this.src = looks;
         this.x = 0;
         this.y = 0;
+
+        this.random = {ye:false, max:10}
     }
 
     draw(gameFrame) {
@@ -14,21 +16,25 @@ export class Bullet {
         bulletRender.src = this.src;
         ctx.drawImage(bulletRender,this.x, this.y);
 
-        if (this.x >= gameFrame.width) {this.x = 0;}
-        if (this.y >= gameFrame.height) {this.y = 0;}
+        if (this.x >= gameFrame.width) {this.x = 0; this.y = Math.floor(Math.random() * gameFrame.height)}
+        if (this.y >= gameFrame.height) {this.y = 0; this.x = Math.floor(Math.random() * gameFrame.width)}
     }
 
     shoot(direction) {
         switch (direction) {
             case 'horizontal':
-                this.x += this.speed;
+                this.x += this.random.ye == true ? Math.floor(Math.random() * this.random.max) : this.speed;
                 break;
             case 'vertical':
-                this.y += this.speed;
+                this.y += this.random.ye == true ? Math.floor(Math.random() * this.random.max) : this.speed;
                 break;
             case 'diagonal':
+                this.x += this.random.ye == true ? Math.floor(Math.random() * this.random.max) : this.speed;
+                this.y += this.random.ye == true ? Math.floor(Math.random() * this.random.max) : this.speed;
+                break;
+            case 'sine':
+                this.y += this.speed * Math.sin(this.x);
                 this.x += this.speed;
-                this.y += this.speed;
                 break;
         }
     }

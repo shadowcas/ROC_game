@@ -60,7 +60,8 @@ body {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 #canvasField {
   width: 550px;
@@ -77,7 +78,14 @@ body {
   bottom: 26px;
   left: 23px;
 }
-
+#field #lifes {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #140F0B;
+}
 #shop {
   width: 30%;
   height: 100%;
