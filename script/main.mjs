@@ -3,12 +3,15 @@
 import {Bullet} from "./objects/bullet.mjs";
 import {Player} from "./objects/player.mjs";
 import {Fight} from "./combat/fight.mjs";
+import * as all_fights from "./combat/all_fights.mjs";
 
 const gameFrame = document.getElementById('gameFrame'),
       ctx = gameFrame.getContext('2d');
 
 let player = new Player(1, 3, 'media/player/heart.png'),
-    counter = 0;
+    counter = 0,
+    current_level = 1,
+    initialized = false;
 
 player.x = gameFrame.width / 2;
 player.y = gameFrame.height / 2;
@@ -20,46 +23,50 @@ window.addEventListener("keyup", function(e) {player.move(e.type, e.keyCode, gam
 // Game loop
 // ----------
 let bullets = [];
-
-let walnutFight = new Fight(1, 12, 600);
-
-walnutFight_init();
-
-function walnutFight_init() {
-  for (let i = 0; i < walnutFight.n_bullets; i++) {
-    bullets[i] = new Bullet(i, 5, 'media/bullets/seed.png');
-    if (i % 2 == 1) {
-      bullets[i].y = Math.floor(Math.random() * gameFrame.height);
-    } else {
-      bullets[i].x = Math.floor(Math.random() * gameFrame.width);
-    }
-  }
-  walnutFight.bullets = bullets;
-}
+let enemies = {
+  1: new Fight(1, "walnut", 8, 300, "media/play/zone1_creatures/1.png"),
+  2: new Fight(2, "Floof", 12, 300, "media/play/zone1_creatures/2.png"),
+  3: new Fight(3, "Umons", 16, 300, "media/play/zone1_creatures/3.png"),
+  4: new Fight(4, "paddo",  20, 300, "media/play/zone1_creatures/4.png"),
+  5: new Fight(5, "Hopkins", 24, 300, "media/play/zone1_creatures/5.png"),
+  6: new Fight(6, "Clawdius",  28, 300, "media/play/zone1_creatures/boss.png")
+};
 
 function update(elapsed) {
+  if (!initialized) {
+    player.W = false; player.A = false; player.S = false; player.D;
+    
+    eval(`all_fights.init${enemies[current_level].level}(enemies[current_level])`);
+    initialized = true;
+    console.log("initialized");
+  }
+
   player.calc();
 
-  let hit = bullets.filter(bullet => bullet.x > player.x - 15 && bullet.x < player.x + 25 && bullet.y > player.y - 15 && bullet.y < player.y + 25);
+  let hit = enemies[current_level].bullets.filter(bullet => bullet.x > player.x - 15 && bullet.x < player.x + 25 && bullet.y > player.y - 15 && bullet.y < player.y + 25);
 
   if (hit.length > 0 && player.hit == false) {
     player.HPhandler("hit");
-    console.log("hit");
   }
 
   player.HPhandler();
-
-  if (counter >= walnutFight.time) {
-    console.log("You won!");
-  }
-  counter++;
 }
 
 function render() {
   ctx.clearRect(0, 0, gameFrame.width, gameFrame.height);
   player.draw(gameFrame);
 
-  walnutFight.drawPattern();
+  enemies[current_level].drawPattern();
+
+  counter++;
+  if (counter >= enemies[current_level].time) {
+    alert("level up!");
+    current_level++;
+    counter = 0;
+    initialized = false;
+
+    player.health = 3;
+  }
 }
 
 let lastUpdate;

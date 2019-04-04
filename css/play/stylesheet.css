@@ -34,7 +34,17 @@ body {
   display: flex;
   justify-content: center;
 }
-
+#enemy #card #level {
+  position: absolute;
+  top: 0; left: 0;
+  height: 50px; width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  color: #140F0B;
+  -webkit-text-stroke: 1px #E19B3F;
+}
 #enemy #card p {
   font-size: 1.8rem;
   padding-top: 82%;
@@ -45,7 +55,6 @@ body {
 #enemy #creature {
   width: 200px;
   height: 285px;
-  background-image: url("../../media/play/zone1_creatures/1.png");
   background-size: cover;
 }
 

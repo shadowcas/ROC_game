@@ -25,7 +25,7 @@ export class Player {
 
     draw(gameFrame) {
         const ctx = gameFrame.getContext('2d');
-        let render = new Image();
+        let render = new Image(25, 25);
 
         if (this.hit == true) {
             render.src = this.hitSrc;
@@ -93,7 +93,7 @@ export class Player {
     }
 
     calc() {
-        if (this.D && (this.x + 25) <= gameFrame.width) {this.x += this.speed}
+        if (this.D && (this.x + 27) <= gameFrame.width) {this.x += this.speed}
         if (this.S && (this.y + 30) <= gameFrame.height) {this.y += this.speed}
         if (this.A && (this.x - 10) >= 0) {this.x -= this.speed}
         if (this.W && (this.y - 10) >= 0) {this.y -= this.speed}

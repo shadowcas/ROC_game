@@ -6,7 +6,7 @@ export class Bullet {
         this.x = 0;
         this.y = 0;
 
-        this.random = {ye:false, max:10}
+        this.random = {ye:false, max:this.speed}
     }
 
     draw(gameFrame) {
