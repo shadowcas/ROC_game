@@ -21,11 +21,11 @@ export class Fight {
     drawPattern() {
         for (let i = 0; i < this.n_bullets; i++) {
             if (i % 2 == 1) {
-                this.bullets[i].random.ye = true;
+                this.bullets[i].random.ye = false;
                 this.bullets[i].shoot('horizontal');
             } else {
-                this.bullets[i].random.ye = true;
-                this.bullets[i].shoot('vertical');
+                this.bullets[i].random.ye = false;
+                this.bullets[i].shoot('diagonal');
             }
             this.bullets[i].draw(this.gameFrame);
         }

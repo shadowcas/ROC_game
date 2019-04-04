@@ -8,7 +8,6 @@
 
     <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon"> 
     
-    <!-- <script src="script/combat/all_fights.js"></script> -->
     <script type="module" src="script/main.mjs"></script>
 </head>
 <body>
@@ -16,6 +15,7 @@
         <div id="card">
             <div id="level">[#]</div>
             <p id="name">[enemy_name]</p>
+            <div id="time">[time]</div>
         </div>
         <div id="creature"></div>
     </div>
@@ -27,6 +27,11 @@
         </div>
         <div id="canvasField">
             <canvas id="gameFrame" width="500" height="630"></canvas>
+            <div id="level_up">
+                <img src="media/play/cleared.png">
+                
+                <a id="next"><div id="play"></div></a>
+            </div>
         </div>
     </div>
     <div id="shop">

@@ -1,6 +1,6 @@
 export class Player {
     constructor(speed, startHP, looks) {
-        this.speed = speed * 5;
+        this.speed = speed;
         this.health = startHP;
         this.src = looks;
 
@@ -21,6 +21,8 @@ export class Player {
         this.hit = false;
         this.grace = false;
         this.invFrames = 0;
+
+        this.isPlaying = true;
     }
 
     draw(gameFrame) {
@@ -57,7 +59,7 @@ export class Player {
         }
     }
 
-    move(k, kc, gameFrame) {
+    move(k, kc) {
         if (k == "keydown") {
             switch (kc) {
                 case 68: //d
@@ -97,5 +99,5 @@ export class Player {
         if (this.S && (this.y + 30) <= gameFrame.height) {this.y += this.speed}
         if (this.A && (this.x - 10) >= 0) {this.x -= this.speed}
         if (this.W && (this.y - 10) >= 0) {this.y -= this.speed}
-    }    
+    }
 }
