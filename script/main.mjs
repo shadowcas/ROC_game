@@ -26,12 +26,12 @@ document.getElementById("next").addEventListener("click", function() {
 // Game loop
 // ----------
 let enemies = {
-  1: new Fight(1, "walnut", 8, 600, "media/play/zone1_creatures/1.png"),
-  2: new Fight(2, "Floof", 10, 900, "media/play/zone1_creatures/2.png"),
-  3: new Fight(3, "Umons", 10, 1200, "media/play/zone1_creatures/3.png"),
-  4: new Fight(4, "paddo",  15, 1500, "media/play/zone1_creatures/4.png"),
-  5: new Fight(5, "Hopkins", 20, 2000, "media/play/zone1_creatures/5.png"),
-  6: new Fight(6, "Clawdius",  25, 2500, "media/play/zone1_creatures/boss.png")
+  1: new Fight(1, "walnut", 8, 500, "media/play/zone1_creatures/1.png"),
+  2: new Fight(2, "Floof", 10, 850, "media/play/zone1_creatures/2.png"),
+  3: new Fight(3, "Umons", 10, 1000, "media/play/zone1_creatures/3.png"),
+  4: new Fight(4, "paddo",  15, 1300, "media/play/zone1_creatures/4.png"),
+  5: new Fight(5, "Hopkins", 20, 1800, "media/play/zone1_creatures/5.png"),
+  6: new Fight(6, "Clawdius",  25, 1800, "media/play/zone1_creatures/boss.png")
 };
 
 function update(elapsed) {
@@ -58,7 +58,7 @@ function render() {
   ctx.clearRect(0, 0, gameFrame.width, gameFrame.height);
   player.draw(gameFrame);
 
-  enemies[current_level].drawPattern();
+  enemies[current_level].drawPattern(enemies[current_level].level);
 
   document.getElementById('time').innerText = `${parseInt(enemies[current_level].time / 17)- parseInt(counter / 17)}`;
   
@@ -72,9 +72,12 @@ function render() {
     ctx.clearRect(0, 0, gameFrame.width, gameFrame.height);
 
     document.getElementById("level_up").style.display = "flex";
-  }
 
-  console.log(player.isPlaying);
+    if (current_level == 7) {
+      alert("You have won!");
+      window.location.href = "index.html";
+    }
+  }
 }
 
 let lastUpdate;

@@ -18,16 +18,68 @@ export class Fight {
         document.getElementById("creature").style.backgroundImage = `url('${this.image}')`;
     }
 
-    drawPattern() {
-        for (let i = 0; i < this.n_bullets; i++) {
-            if (i % 2 == 1) {
-                this.bullets[i].random.ye = false;
-                this.bullets[i].shoot('horizontal');
-            } else {
-                this.bullets[i].random.ye = false;
-                this.bullets[i].shoot('diagonal');
-            }
-            this.bullets[i].draw(this.gameFrame);
+    drawPattern(level) {
+        switch (level) {
+            case 1:
+                for (let i = 0; i < this.n_bullets; i++) {
+                    if (i % 2 == 1) {
+                        this.bullets[i].shoot('horizontal');
+                    } else {
+                        this.bullets[i].shoot('horizontal_rev');
+                    }
+                    this.bullets[i].draw(this.gameFrame);
+                }
+                break;
+            case 2:
+                for (let i = 0; i < this.n_bullets; i++) {
+                    if (i % 2 == 1) {
+                        this.bullets[i].shoot('vertical');
+                    } else {
+                        this.bullets[i].shoot('vertical_rev');
+                    }
+                    this.bullets[i].draw(this.gameFrame);
+                }
+                break;
+            case 3:
+                for (let i = 0; i < this.n_bullets; i++) {
+                    if (i % 2 == 1) {
+                        this.bullets[i].shoot('diagonal_r_d');
+                    } else {
+                        this.bullets[i].shoot('diagonal_l_d');
+                    }
+                    this.bullets[i].draw(this.gameFrame);
+                }
+                break;
+            case 4:
+                for (let i = 0; i < this.n_bullets; i++) {
+                    if (i % 2 == 1) {
+                        this.bullets[i].shoot('vertical');
+                    } else {
+                        this.bullets[i].shoot('horizontal_rev');
+                    }
+                    this.bullets[i].draw(this.gameFrame);
+                }
+                break;
+            case 5:
+                for (let i = 0; i < this.n_bullets; i++) {
+                    if (i % 2 == 1) {
+                        this.bullets[i].shoot('diagonal_l_d');
+                    } else {
+                        this.bullets[i].shoot('diagonal_r_d');
+                    }
+                    this.bullets[i].draw(this.gameFrame);
+                }
+                break;
+            case 6:
+                for (let i = 0; i < this.n_bullets; i++) {
+                    if (i % 2 == 1) {
+                        this.bullets[i].shoot('horizontal_rev');
+                    } else {
+                        this.bullets[i].shoot('diagonal_l_u');
+                    }
+                    this.bullets[i].draw(this.gameFrame);
+                }
+                break;
         }
     }
 }

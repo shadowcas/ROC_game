@@ -6,11 +6,7 @@ export function init1(enemy) {
     enemy.init();
     for (let i = 0; i < enemy.n_bullets; i++) {
       bullets[i] = new Bullet(i, 4, 'media/bullets/seed.png');
-      if (i % 2 == 1) {
-        bullets[i].y = Math.floor(Math.random() * gameFrame.height);
-      } else {
-        bullets[i].x = Math.floor(Math.random() * gameFrame.width);
-      }
+      bullets[i].y = Math.floor(Math.random() * gameFrame.height);
     }
     enemy.bullets = bullets;
 }
@@ -21,11 +17,7 @@ export function init2(enemy) {
   enemy.init();
   for (let i = 0; i < enemy.n_bullets; i++) {
     bullets[i] = new Bullet(i, 4, 'media/bullets/seed.png');
-    if (i % 2 == 1) {
-      bullets[i].y = Math.floor(Math.random() * gameFrame.height);
-    } else {
-      bullets[i].x = Math.floor(Math.random() * gameFrame.width);
-    }
+    bullets[i].x = Math.floor(Math.random() * gameFrame.width);
   }
   enemy.bullets = bullets;
 }
@@ -35,9 +27,9 @@ export function init3(enemy) {
   let bullets = [];
   enemy.init();
   for (let i = 0; i < enemy.n_bullets; i++) {
-    bullets[i] = new Bullet(i, 6, 'media/bullets/seed.png');
+    bullets[i] = new Bullet(i, 4, 'media/bullets/seed.png');
     if (i % 2 == 1) {
-      bullets[i].y = Math.floor(Math.random() * gameFrame.height);
+      bullets[i].x = Math.floor(Math.random() * gameFrame.height);
     } else {
       bullets[i].x = Math.floor(Math.random() * gameFrame.width);
     }
@@ -52,7 +44,7 @@ export function init4(enemy) {
   for (let i = 0; i < enemy.n_bullets; i++) {
     bullets[i] = new Bullet(i, 6, 'media/bullets/seed.png');
     if (i % 2 == 1) {
-      bullets[i].y = Math.floor(Math.random() * gameFrame.height);
+      bullets[i].x = Math.floor(Math.random() * gameFrame.height);
     } else {
       bullets[i].x = Math.floor(Math.random() * gameFrame.width);
     }
@@ -65,7 +57,7 @@ export function init5(enemy) {
   let bullets = [];
   enemy.init();
   for (let i = 0; i < enemy.n_bullets; i++) {
-    bullets[i] = new Bullet(i, 8, 'media/bullets/seed.png');
+    bullets[i] = new Bullet(i, 6, 'media/bullets/seed.png');
     if (i % 2 == 1) {
       bullets[i].y = Math.floor(Math.random() * gameFrame.height);
     } else {
@@ -80,7 +72,7 @@ export function init6(enemy) {
   let bullets = [];
   enemy.init();
   for (let i = 0; i < enemy.n_bullets; i++) {
-    bullets[i] = new Bullet(i, 8, 'media/bullets/seed.png');
+    bullets[i] = new Bullet(i, 7, 'media/bullets/seed.png');
     if (i % 2 == 1) {
       bullets[i].y = Math.floor(Math.random() * gameFrame.height);
     } else {
